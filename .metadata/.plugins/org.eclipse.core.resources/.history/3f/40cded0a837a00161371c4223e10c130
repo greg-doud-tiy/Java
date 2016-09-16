@@ -1,0 +1,65 @@
+package ssa;
+import java.sql.*;
+
+public class JdbcDemonstration {
+	
+	static final String dburl = "jdbc:mysql://localhost:3306/tiy?autoReconnect=true&useSSL=false";
+	public static final String userName = "root";
+	public static final String password = "admin";
+	static Connection myConn = null;
+	static Statement stmt = null;
+	static ResultSet rs = null;
+	
+	public static void main(String[] args) throws SQLException {
+		// fetch data from the database
+		fetchData();
+	}
+	public static void close(Connection con, Statement stmt, ResultSet rs) throws SQLException {
+		if(con != null) {
+			con.close();
+		}
+		if(stmt != null) {
+			stmt.close();
+		}
+		if(rs != null) {
+			rs.close();
+		}
+	}
+	public static void updateData() throws SQLException {
+		try {
+			myConn = DriverManager.getConnection(dburl, userName, password);
+			stmt = myConn.createStatement();
+			int rowsAffected = stmt.executeUpdate("UPDATE student set gpa = 4.0 where id = 170");
+			if(rowsAffected != 1) {
+				throw new SQLException("No rows were updated");
+			}
+			System.out.println("Update Successful!");
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			close(myConn, stmt, rs);
+		}
+		
+	}
+	public static void fetchData() throws SQLException {
+		try {
+			myConn = DriverManager.getConnection(dburl, userName, password);
+			stmt = myConn.createStatement();
+			rs = stmt.executeQuery("SELECT * from student");
+			String msg = String.format("%s, %s", "id", "name");
+			System.out.println(msg);
+			while(rs.next()) {
+				int id = rs.getInt("id");
+				String firstName = rs.getString("first_name");
+				String lastName = rs.getString("last_name");
+				
+				msg = String.format("%d, %s %s", id, firstName, lastName);
+				System.out.println(msg);
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			close(myConn, stmt, rs);
+		}	
+	}
+}

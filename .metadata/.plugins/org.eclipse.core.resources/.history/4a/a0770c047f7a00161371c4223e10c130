@@ -1,0 +1,32 @@
+package ssa;
+import java.sql.*;
+
+public class JdbcDemonstration {
+	
+	static final String dburl = "jdbc:mysql://localhost:3306/tiy?autoReconnect=true&useSSL=false";
+	public static final String userName = "root";
+	public static final String password = "admin";
+	static Connection myConn = null;
+	static Statement stmt = null;
+	
+	public static void main(String[] args) {
+		ResultSet rs = null;
+		try {
+			Connection myConn = DriverManager.getConnection(dburl, userName, password);
+			stmt = myConn.createStatement();
+			rs = stmt.executeQuery("SELECT * from student");
+			while(rs.next()) {
+				int id = rs.getInt("id");
+				String firstName = rs.getString("first_name");
+				String lastName = rs.getString("last_name");
+				
+				String msg = String.format("%d, %s %s", id, firstName, lastName);
+				System.out.println(msg);
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			//myConn.close();
+		}
+	}
+}

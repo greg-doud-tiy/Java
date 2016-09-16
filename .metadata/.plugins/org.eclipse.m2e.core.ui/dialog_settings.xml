@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+		<list key="ciManagementUrl">
+		</list>
+		<list key="ciManagementSystem">
+		</list>
+		<list key="issueManagementSystem">
+			<item value="JIRA"/>
+		</list>
+		<list key="issueManagementUrl">
+			<item value="http://issues.apache.org/jira/browse/LOGGING"/>
+		</list>
+	</section>
+</section>

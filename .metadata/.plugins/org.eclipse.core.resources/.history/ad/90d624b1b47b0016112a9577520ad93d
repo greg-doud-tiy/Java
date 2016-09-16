@@ -1,0 +1,132 @@
+package ssa;
+import java.sql.*;
+import java.util.ArrayList;
+public class Student {
+	Db db = null;
+	int id = -1;
+	String firstName = null;
+	String lastName = null;
+	int sat = -1;
+	double gpa = -1.0;
+	String majorRequested = null;
+	int majorId = -1;
+	
+	public boolean scheduleClasses() {
+		try {
+			String sql = "select m.description as 'Major', c.Id as 'classId', "
+					+ " concat(c.subject,c.section) as 'Class' "
+					+ " from major m "
+					+ " join major_class_relationship mc "
+					+ " 	on m.id = mc.major_id "
+					+ " join class c " 
+					+ " 	on c.id = mc.class_id where m.id = ?";
+			db.pstmt = db.conn.prepareStatement(sql);
+			db.pstmt.setInt(1, this.majorId);
+			db.rs = db.pstmt.executeQuery();
+			int idx = 0;
+			String[] classIds = new String[4];
+			while(db.rs.next()) { // should be multiple
+				int classId = db.rs.getInt("classId");
+				classIds[idx] = String.valueOf(classId);
+				idx++;
+				if(idx == 2)
+					break;
+			}
+			
+			// get other classes to total four
+			
+			sql = "SELECT id from class where id not in (" + String.join(",", classIds) + ")";
+			db.pstmt = db.conn.prepareStatement(sql);
+			db.pstmt.setInt(1, this.majorId);
+			db.rs = db.pstmt.executeQuery();
+			while(db.rs.next()) { // should be multiple
+				int classId = db.rs.getInt("classId");
+				classIds[idx] = String.valueOf(classId);
+				idx++;
+				if(idx == 4)
+					break;
+			}
+			
+			// enroll in all the selected classes
+			sql = "INSERT student_class_relationship (student_id, class_id) values (?,?)";
+			db.pstmt = db.conn.prepareStatement(sql);
+			db.pstmt.setInt(1, this.id);
+			for(String classId : classIds) {
+				db.pstmt.setInt(2, Integer.parseInt(classId));
+				int recsAffected = db.pstmt.executeUpdate();
+				if(recsAffected != 1) {
+					throw new Exception("Class was not scheduled for Student!");
+				}
+			}
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return true;
+	}
+	public boolean assignMajor() {
+		try {
+			String sql = "SELECT * from major where description = ?";
+			db.pstmt = db.conn.prepareStatement(sql);
+			db.pstmt.setString(1, this.majorRequested);
+			db.rs = db.pstmt.executeQuery();
+			if(!db.rs.next()) { // should be only one
+				return false; // don't set the major
+			}
+			this.majorId = db.rs.getInt("id");
+			int minSat = db.rs.getInt("req_sat");
+			
+			// check for minimum sat
+			if(this.sat < minSat)
+				return false;
+			
+			// update the student
+			sql = String.format("UPDATE student set major_id = ? where id = ?");
+			db.pstmt = db.conn.prepareStatement(sql);
+			db.pstmt.setInt(1, this.majorId);
+			db.pstmt.setInt(2, this.id);
+			int recsAffected = db.pstmt.executeUpdate();
+			if(recsAffected != 1) {
+				throw new Exception("Major was not set for Student!");
+			}
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return true;
+	}
+	public boolean enroll() {
+		try {
+			String sql = "INSERT student (first_name, last_name, sat, gpa) values (?,?,?,?)";
+			db.pstmt = db.conn.prepareStatement(sql);
+			db.pstmt.setString(1, this.firstName);
+			db.pstmt.setString(2, this.lastName);
+			db.pstmt.setInt(3, this.sat);
+			db.pstmt.setDouble(4, gpa);
+			int recsAffected = db.pstmt.executeUpdate();
+			if(recsAffected != 1) {
+				return false;
+			}
+			
+			// get the new id
+			sql = "SELECT LAST_INSERT_ID()";
+			db.stmt = db.conn.createStatement();
+			db.rs = db.stmt.executeQuery(sql);
+			if(!db.rs.next())
+				throw new Exception("Cannot get the LAST_INSERT_ID()");
+			this.id = db.rs.getInt(1);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return true;
+	}
+	
+	public Student(String firstName, String lastName, int sat, double gpa, String majorRequested) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.sat = sat;
+		this.gpa = gpa;
+		this.majorRequested = majorRequested;
+		this.db = Mainline.db;
+	}
+}

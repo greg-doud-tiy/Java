@@ -1,0 +1,25 @@
+package ssa;
+import java.sql.*;
+import java.util.Properties;
+
+public class Db {
+	Connection conn = null;
+	Statement stmt = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	
+	public Db(String url, String usr, String pwd) {
+		try {
+			Properties prop = new Properties();
+			prop.load(new java.io.FileInputStream("db.properties"));
+			String pDb = prop.getProperty("db");
+			String pUsr = prop.getProperty("urs");
+			String pPwd = prop.getProperty("pwd");
+			String pUrl = prop.getProperty("url");
+			String dbUrl = String.format(pUrl, pDb);
+			conn = DriverManager.getConnection(dbUrl, pUsr, pPwd);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+}

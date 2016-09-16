@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="ExternalProjectImportWizard">
+		<item value="false" key="WizardProjectsImportPage.STORE_NESTED_PROJECTS"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
+		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="/Users/gregorydoud/test"/>
+			<item value="/Users/gregorydoud/test/Assignment-11--JDBC"/>
+			<item value="/Users/gregorydoud/test/JDBCDemo"/>
+			<item value="/Users/gregorydoud/test/JdbcProject"/>
+			<item value="/Users/gregorydoud/Java/JdbcProject"/>
+			<item value="/Users/gregorydoud/test/JDBC-Project"/>
+			<item value="/Users/gregorydoud/test/JDBCProject"/>
+			<item value="/Users/gregorydoud/Java/Students/JoeHill"/>
+			<item value="/Users/gregorydoud/Java/Students/ArunKumarsomu/AKInvenstmentAccount"/>
+			<item value="/Users/gregorydoud/Java/Students/AishaCovington"/>
+		</list>
+		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value=""/>
+		</list>
+	</section>
+</section>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;ssa.Shape.java&apos; to &apos;IShape.java&apos;&#x0A;- Original project: &apos;MiscellaneousTopics&apos;&#x0A;- Original element: &apos;ssa.Shape.java&apos;&#x0A;- Renamed element: &apos;ssa.IShape.java&apos;" description="Rename compilation unit &apos;Shape.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;ssa{Shape.java" name="IShape.java" references="false" stamp="1472828465509" version="1.0"/>
+</session>

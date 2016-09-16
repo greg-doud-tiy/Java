@@ -1,0 +1,62 @@
+The bank statement
+
+
+This assignment is to create a monthly bank statement with a list of all the accounts listing one per line and displaying:
+
+Indicator whether the account is a Savings or Checking account ('A' or 'C')
+Account number (i.e. 100)
+Description
+Balance in the account propertly formatted (i.e. 4000.00)
+Last check number [if the account is a Checking account] OR
+Interest rate [if the account is a Savings account]
+It would look something like this:
+
+T Act Description                  Bal    Chk  Rate
+= === ============================ ====== ===  ====
+S 110 Savings A                    500.00      2.50
+C 120 Checking B                   400.00 100 
+S 130 Savings C                    800.00      1.50
+C 140 Checking D                   200.00 230
+To generate this report, you'll need to execute the following lines in your Mainline class file:
+
+Savings savings1 = new Savings();
+savings.setDescription("Savings A");
+savings.deposit(500.00);
+savings.setIntRate(0.025);
+
+Checking checking2 = new Checking();
+checking2.setDescription("Checking B");
+checking2.setLastCheckNbr(100);
+checking2.deposit(400.00);
+
+Savings savings3 = new Savings();
+savings3.setDescription("Savings C");
+savings3.deposit(800.00);
+savings3.setIntRate(0.015);
+
+Checking checking4 = new Checking();
+checking4.setDescription("Checking D");
+checking4.setLastCheckNbr(230);
+checking4.deposit(200.00);
+
+ArrayList<Account> accounts = new ArrayList<Account>();
+accounts.add(savings1);
+accounts.add(checking2)
+accounts.add(savings3);
+accounts.add(checking4)
+
+//
+// print headers here 
+//
+for(Account account : accounts) {
+    System.out.println(account.print());
+}
+You need to create at least one JUnit test for your project. You probably have some tests for the getters & setters along with deposit, withdraw, and transferFrom methods. If you don't have any tests for the print() methods in Account and Savings, this might be a good opportunity to do so.
+
+Details
+
+For this assignment, you need to create a new project. You can copy the Account.java, Savings.java into the new project and just make any changes you need.
+
+Project name: TheBankStatement
+Package name: ssa
+When you're done with your code, create a new repository for your project and in GitHub and push your project up to GitHub. Then provide the URL in the assignment.

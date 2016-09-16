@@ -1,0 +1,46 @@
+package ssa;
+
+import java.sql.*;
+import java.util.Properties;
+
+public class SamplePreparedStatement {
+	public static Connection myConn = null;
+	public static PreparedStatement myStmt = null;
+	public static ResultSet myRs = null;
+	
+	static String sql = "SELECT * from student where gpa > ? and sat > ?";
+	
+	public static void main(String[] args) {
+		Properties prop = new Properties();
+		try {
+			prop.load(new java.io.FileInputStream("db.properties"));
+			myConn = DriverManager.getConnection(prop.getProperty("url"), prop.getProperty("usr"), prop.getProperty("pwd"));
+			myStmt = myConn.prepareStatement(sql);
+			myStmt.setDouble(1, 3.0);
+			myStmt.setInt(2 ,900);
+			myRs = myStmt.executeQuery();
+			display();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			try {
+				if(myRs != null) myRs.close();
+				if(myStmt != null) myStmt.close();
+				if(myConn != null) myConn.close();
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+		}
+	}
+	public static void display() throws SQLException {
+		while(myRs.next()) {
+			int id = myRs.getInt("id");
+			String firstName = myRs.getString("first_name");
+			String lastName = myRs.getString("last_name");
+			double gpa = myRs.getDouble("gpa");
+			int sat = myRs.getInt("sat");
+			String msg = String.format("%3d %-30s %4.1f %4d", id, firstName+" "+lastName, gpa, sat);
+			System.out.println(msg);
+		}
+	}
+}

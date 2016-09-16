@@ -1,0 +1,13 @@
+package ssa;
+import java.sql.*;
+
+public class Db {
+	public Connection conn = null;
+	public Statement stmt = null;
+	public PreparedStatement pstmt = null;
+	public ResultSet rs = null;
+	
+	public Db(String url, String usr, String pwd) throws SQLException {
+		conn = DriverManager.getConnection(url, usr, pwd);
+	}
+}

@@ -1,0 +1,29 @@
+package ssa;
+
+import java.sql.*;
+import java.util.Properties;
+
+public class SamplePreparedStatement {
+	public static Connection myConn = null;
+	public static PreparedStatement myStmt = null;
+	public static ResultSet myRs = null;
+	
+	public static void main(String[] args) {
+		Properties prop = new Properties();
+		prop.load(FileInputStream("db.properties"));
+		try {
+			myConn = DriverManager.getConnection(prop.getProperty("url"));
+			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
+			try {
+				if(myRs != null) myRs.close();
+				if(myStmt != null) myStmt.close();
+				if(myConn != null) myConn.close();
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+		}
+	}
+}

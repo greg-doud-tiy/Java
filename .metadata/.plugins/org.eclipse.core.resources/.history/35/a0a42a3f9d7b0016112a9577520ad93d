@@ -1,0 +1,18 @@
+package ssa;
+import java.sql.*;
+import java.util.Properties;
+
+public class Db {
+	Connection conn = null;
+	Statement stmt = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	
+	public Db(String url, String usr, String pwd) {
+		try {
+			conn = DriverManager.getConnection(dbUrl, pUsr, pPwd);
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+}

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+		<item value="/Users/gregorydoud/Java/TheDebugProject"/>
+		<item value="/Users/gregorydoud/Java/Students/KevinTran/BankStatement"/>
+		<item value="/Users/gregorydoud/Java/Students/MichaelClair/BankStatement"/>
+		<item value="/Users/gregorydoud/Java/Students/EvanTizard/BankStatement"/>
+		<item value="/Users/gregorydoud/Java/Students/ShaquilTimmons/BankStatement"/>
+		<item value="/Users/gregorydoud/Java/Students/KarenReiter/BankStatement"/>
+		<item value="/Users/gregorydoud/Java/Students/DaxRichards/BankStatement"/>
+		<item value="/Users/gregorydoud/Java/Students/LiLui/Assignments/Day13/TheBankStatement"/>
+		<item value="/Users/gregorydoud/Java/Students/JoshuaFraney/BankStatement"/>
+		<item value="/Users/gregorydoud/Java/Students/JarrettAcey/BankStatement"/>
+		<item value="/Users/gregorydoud/Java/Students/ReubenTurner/BankStatement"/>
+		<item value="/Users/gregorydoud/Java/Students/MichaelSykes/BankStatment"/>
+		<item value="/Users/gregorydoud/Java/Students/PeterChoi/BankStatement"/>
+		<item value="/Users/gregorydoud/Java/Students/KyleDeen/BankStatement"/>
+		<item value="/Users/gregorydoud/Java/Students/ArunKumarsomu/BankStatement"/>
+		<item value="/Users/gregorydoud/Java/Students/StephenEllwood/BankStatement"/>
+		<item value="/Users/gregorydoud/Java/TheBankStatement_Assignment_10"/>
+		<item value="/Users/gregorydoud/Java/TheBankStatement_Assignment_10/src"/>
+		<item value="/Users/gregorydoud/Java/SimpleCraps"/>
+	</list>
+	<section name="ExternalProjectImportWizard">
+		<item value="false" key="WizardProjectsImportPage.STORE_NESTED_PROJECTS"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
+		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
+		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="/Users/gregorydoud/test/JDBCProject"/>
+			<item value="/Users/gregorydoud/Java/Students/KevinTran/InvestmentAccount"/>
+			<item value="/Users/gregorydoud/Java/Students/StephenRook/InvestmentAccount"/>
+			<item value="/Users/gregorydoud/Java/Students/EvanTizard/BankStatement/TheBankStatement"/>
+			<item value="/Users/gregorydoud/Java/Students/AishaCovington/BankStatement"/>
+			<item value="/Users/gregorydoud/Java/Students/GabrielHamilton/BankStatement"/>
+			<item value="/Users/gregorydoud/Java/Students/JonathanStafford/Assignments"/>
+			<item value="/Users/gregorydoud/Java/Students/EvanTizard/BankStatement"/>
+			<item value="/Users/gregorydoud/Java/Students/DanielKassaye/BankStatement"/>
+			<item value="/Users/gregorydoud/Java/TheDebugProject"/>
+		</list>
+		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value=""/>
+		</list>
+	</section>
+	<section name="WORKBENCH_SETTINGS">
+		<list key="ENABLED_TRANSFERS">
+		</list>
+	</section>
+	<section name="ChooseWorkspaceDialogSettings">
+		<item value="343" key="DIALOG_X_ORIGIN"/>
+		<item value="188" key="DIALOG_Y_ORIGIN"/>
+	</section>
+</section>

@@ -1,0 +1,29 @@
+Student class roster by first name
+Empl Id   First name         Last name          Eye color   Months at SSA
+=======   ================   ================   =========   =============
+004014    Aisha              Covington          Brown             10
+006789    Arun               Soma               Brown              2
+772223    Daniel             Kiros              Brown              3
+267252    Dax                Richards           Brown             12
+008888    Evan               Tizard             Brown             12
+523420    Gabriel            Hamilton           Other             10
+474143    Jonathan           Stafford           Brown             13
+215296    Joshua             Franey             Other             27
+001449    Karen              Reiter             Blue              10
+005295    Kyle               Deen               Blue               2
+306700    Li                 Lui                Brown             12
+229949    Michael            Sykes              Brown             13
+001122    Michael            C                  Other             12
+004444    Peter              Choi               Brown              2
+132617    Reuben             Turner             Blue              12
+343769    Shaquil            Timmons            Brown             11
+001212    Stephen            Rook               Brown             11
+009999    Steve              Ellwood            Other              2
+************************
+Student class roster by Id
+Empl Id   First name         Last name          Eye color   Months at SSA
+=======   ================   ================   =========   =============
+306700    Li                 Lui                Brown             12
+267252    Dax                Richards           Brown             12
+343769    Shaquil            Timmons            Brown             11
+
