@@ -37,7 +37,7 @@ public class Student {
 			// get other classes to total four
 			
 			sql = "SELECT id from class where id not in (" + String.join(",", classIds) + ")";
-			rs = db.getSqlResultSet(sql);
+			ResultSet rs = db.getSqlResultSet(sql);
 //			db.pstmt = db.conn.prepareStatement(sql);
 //			db.rs = db.pstmt.executeQuery();
 			while(rs.next()) { // should be multiple

@@ -20,10 +20,9 @@ public class Student {
 					+ " 	on m.id = mc.major_id "
 					+ " join class c " 
 					+ " 	on c.id = mc.class_id where m.id = ?";
-//			db.pstmt = db.conn.prepareStatement(sql);
-//			db.pstmt.setInt(1, this.majorId);
-//			db.rs = db.pstmt.executeQuery();
-			ResultSet rs = db.getSqlResultSet(sql, this.majorId);
+			db.pstmt = db.conn.prepareStatement(sql);
+			db.pstmt.setInt(1, this.majorId);
+			db.rs = db.pstmt.executeQuery();
 			int idx = 0;
 			ArrayList<String> classIds = new ArrayList<String>();
 			while(db.rs.next()) { // should be multiple
@@ -37,11 +36,10 @@ public class Student {
 			// get other classes to total four
 			
 			sql = "SELECT id from class where id not in (" + String.join(",", classIds) + ")";
-			rs = db.getSqlResultSet(sql);
-//			db.pstmt = db.conn.prepareStatement(sql);
-//			db.rs = db.pstmt.executeQuery();
-			while(rs.next()) { // should be multiple
-				int classId = rs.getInt(1);
+			db.pstmt = db.conn.prepareStatement(sql);
+			db.rs = db.pstmt.executeQuery();
+			while(db.rs.next()) { // should be multiple
+				int classId = db.rs.getInt(1);
 				classIds.add(String.valueOf(classId));
 				idx++;
 				if(idx == 4)

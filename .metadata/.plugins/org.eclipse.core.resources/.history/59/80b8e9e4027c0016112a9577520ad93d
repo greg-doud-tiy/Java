@@ -10,12 +10,11 @@ public class Db {
 	public String usr = null;
 	public String pwd = null;
 	
-	public ResultSet getSqlResultSet(String sql, Object... parms ) throws SQLException {
+	public ResultSet getSqlResultSet(PreparedStatement pstmt, Object... parms ) throws SQLException {
 		if(!isConnected())
 			return null;
-		PreparedStatement pstmt = conn.prepareStatement(sql);
-		for(int idx = 0; idx < parms.length; idx++)
-			pstmt.setObject(idx+1, parms[idx]);
+		for(int idx = 1; idx <= parms.length; idx++)
+			pstmt.setObject(idx, parms[idx]);
 		rs = pstmt.executeQuery();
 		return rs;
 	}
